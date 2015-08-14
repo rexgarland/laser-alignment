@@ -1,0 +1,42 @@
+# NOTES
+# documentation here: http://assets.newport.com/webDocuments-EN/images/15236.PDF
+# this motor has no encoder - steps taken are only measured by number of pulses sent to the drivers
+# not all pulses will result in a step, since the piezo motor works by friction of a screw
+# calibration necessary
+
+# SERIAL SETTINGS
+# Bits per second 19200 
+# Data bits 8 
+# Parity NONE 
+# Stop Bits 1 
+# Flow control NONE
+
+# EXAMPLE
+# initialize network
+ini
+# check status
+sta
+# select motor 0 on driver 1 (i.e. x motor on mirror 1)
+chl a1=0
+# confirm that motor 0 of driver 1 is selected
+chl a1
+# set velocity of motor 0 on driver 1 to 1000 (steps/s)
+vel a1 0=1000
+# check acceleration on driver 1 (steps/s^2)
+acc a1
+# plan 1000 forward pulses to motor 0 on driver 1
+rel a1=1000
+# move motor 0 on driver 1 1000 steps forward
+go a1
+# check that 1000 forward pulses were sent
+pos
+# send 1000 backwards pulses to motor 0 on driver 1
+rel a1=-1000
+# move motor 0 on driver 1 1000 steps backward
+go a1
+# check that 1000 backward pulses were sent
+pos
+# gradually stop the motor if it goes too far
+hal
+# sav the current settings (velocities, accelerations)
+sav

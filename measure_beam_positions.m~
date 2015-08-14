@@ -1,0 +1,19 @@
+function [ beam_position ] = measure_beam_positions()
+% Returns the location of the beam's centroids (a vector of 4 values:
+% camera1_x, camera1_y, camera2_x, camera2_y).
+centroid1 = measure_centroid(camera1);
+centroid2 = measure_centroid(camera2);
+beam_position = [centroid1; centroid2];
+end
+
+function [ centroid ] = measure_centroid( camera )
+% Returns the centroid (x, y pixel position as a vector) of the beam in the
+% given camera.
+image = take_snapshot(camera);
+fun = @(x) (gaussian(cente
+x = fminsearch(fun,x0);
+end
+
+function [ image ] = take_snapshot( camera )
+% Returns a snapshot from the camera as a matrix.
+end

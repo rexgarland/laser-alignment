@@ -1,4 +1,4 @@
-function [ beam_position ] = measure_beam_positions()
+function [ beam_position ] = measure_beam_positions( camera1, camera2 )
 % Returns the location of the beam's centroids (a vector of 4 values:
 % camera1_x, camera1_y, camera2_x, camera2_y).
 centroid1 = measure_centroid(camera1);
@@ -17,4 +17,5 @@ end
 
 function [ image ] = take_snapshot( camera )
 % Returns a snapshot from the camera as a matrix.
+imaq
 end
